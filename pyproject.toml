@@ -28,7 +28,7 @@ keywords = ['virtualenv', 'pyenv']
 requires-python = '>= 3.8'
 dependencies = [
     'virtualenv',
-    'pyenv-inspect >= 0.4, < 0.5',
+    'pyenv-inspect@git+https://github.com/hhatto/pyenv-inspect#egg=pypy',
 ]
 dynamic = ['version']
 

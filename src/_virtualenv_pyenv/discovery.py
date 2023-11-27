@@ -131,7 +131,7 @@ class _Pyenv(Discover):
         impl: Optional[str] = builtin_spec.implementation
         # PythonSpec.from_string_spec() replaces 'py' and 'python', but not
         # 'cpython', with None
-        if impl is not None and impl != 'cpython':
+        if impl is not None and impl not in ('cpython', 'pypy'):
             raise _Error('only CPython is currently supported')
 
         # finally, we build a pyenv-style spec
@@ -146,7 +146,7 @@ class _Pyenv(Discover):
         version = '.'.join(version_components)
         pyenv_spec = PyenvPythonSpec(
             string_spec=version,
-            implementation=Implementation.CPYTHON, version=version,
+            implementation=Implementation.CPYTHON if impl == 'cpython' else Implementation.PYPY,
         )
         return self._find_interpreter(pyenv_spec)
 

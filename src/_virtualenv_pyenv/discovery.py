@@ -147,6 +147,7 @@ class _Pyenv(Discover):
         pyenv_spec = PyenvPythonSpec(
             string_spec=version,
             implementation=Implementation.CPYTHON if impl == 'cpython' else Implementation.PYPY,
+            version=version,
         )
         return self._find_interpreter(pyenv_spec)
 
